@@ -1,0 +1,18 @@
+{% extends "home/base.html" %}
+
+{% block title %}Activacion{% endblock %}
+
+{% block content %}
+   <div class="container p-5">
+       <div class="row justify-content-center">
+           <div class="col-md-6 bg-dark text-light p-4 rounded">
+               <h2 class="text-center mb-4">Activar cuenta</h2>
+               <form method="post">
+                   {% csrf_token %}
+                   {{ form.as_p }}
+                   <button type="submit" class="btn btn-primary btn-block mt-3">Activar</button>
+               </form>
+           </div>
+       </div>
+   </div>
+{% endblock %}

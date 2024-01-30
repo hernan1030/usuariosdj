@@ -39,3 +39,13 @@ STATICFILES_DIRS = [
 # Configuracion para cargar imagenes
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+# condiguracion de envio de email con gmail
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = get_secret('EMAIL')
+EMAIL_HOST_PASSWORD = get_secret('PASSWORD_EMAIL')
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False

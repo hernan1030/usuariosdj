@@ -40,7 +40,7 @@ DJANGO_APPS = (
     'django.contrib.staticfiles',
 )
 
-LOCAL_APPS = ()
+LOCAL_APPS = ('applications.users', 'applications.home')
 
 THIRD_PARTY_APPS = ()
 
@@ -77,16 +77,30 @@ TEMPLATES = [
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
+"""
+
+# settings.py
+
+
+MinimumLengthValidator: Exige que la contraseña tenga una longitud mínima de 8 caracteres.
+CommonPasswordValidator: Verifica si la contraseña es una contraseña común y fácil de adivinar.
+NumericPasswordValidator: Exige que la contraseña contenga al menos un carácter numérico.
+"""
 
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+
     },
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'OPTIONS': {
+            'min_length': 8,
+        }
     },
     {
         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+
     },
     {
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
@@ -108,3 +122,14 @@ WSGI_APPLICATION = 'usuario.wsgi.application'
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Esta línea se utiliza para especificar
+# un modelo personalizado de usuario que Django debe utilizar en lugar del modelo
+# de usuario predeterminado proporcionado por Django.
+AUTH_USER_MODEL = "users.User"
+
+
+# esta linea lo que hace es redirigir al usuario que intenta entrae al perfil
+# de usuario , esto con el dcorador y loguin require
+LOGIN_URL = 'login'
